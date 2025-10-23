@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Statement Parser</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-white shadow-sm mb-4">
+      <div class="container">
+        <a class="navbar-brand brand" href="/">Statement Parser</a>
+        <span class="small-muted">Upload a PDF, pick issuer, get parsed fields</span>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="card p-4 shadow-sm">
+            <h4>Upload credit card statement</h4>
+            <form action="/parse" method="post" enctype="multipart/form-data">
+              <div class="mb-3">
+                <label for="issuer" class="form-label">Issuer</label>
+                <select id="issuer" name="issuer" class="form-select">
+                  {% for id, display in issuers %}
+                  <option value="{{ id }}">{{ display }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="pdf" class="form-label">PDF file</label>
+                <input class="form-control" type="file" id="pdf" name="pdf" accept="application/pdf" />
+              </div>
+
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="debug" name="debug" value="1">
+                <label class="form-check-label" for="debug">Show raw extracted text</label>
+              </div>
+
+              <button class="btn btn-primary">Parse statement</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card p-3">
+            <h5 class="mb-2">Issuers</h5>
+            <div>
+              {% for id, display in issuers %}
+              <span class="issuer-chip chip-{{ id }}" data-iss="{{ id }}">{{ display }}</span>
+              {% endfor %}
+            </div>
+            <div class="small text-muted mt-2">Click a chip to pre-select the issuer in the form above.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/main.js"></script>
+  </body>
+</html>

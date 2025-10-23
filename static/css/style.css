@@ -1,0 +1,52 @@
+body {
+  background: linear-gradient(180deg, #fff7ed 0%, #eef2f7 100%);
+  color: #0f172a;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+.brand {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.card-issuer {
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.card-issuer:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(15,23,42,0.08);
+}
+.small-muted {
+  color: #64748b;
+}
+.raw-text {
+  max-height: 320px;
+  overflow: auto;
+  white-space: pre-wrap;
+}
+
+/* colorful issuer chips */
+.issuer-chip {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 4px;
+  box-shadow: 0 4px 14px rgba(2,6,23,0.06);
+  transform-origin: center;
+}
+.issuer-chip.selected { transform: scale(0.98); }
+
+.chip-chase { background: linear-gradient(135deg,#0ea5a9,#0369a1); }
+.chip-amex { background: linear-gradient(135deg,#0ea5a9,#0ea5a9); }
+.chip-capone { background: linear-gradient(135deg,#7c3aed,#a78bfa); }
+.chip-citi { background: linear-gradient(135deg,#ef4444,#f97316); }
+.chip-boa { background: linear-gradient(135deg,#06b6d4,#0ea5a9); }
+
+.btn-ghost {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(15,23,42,0.06);
+}
+
+.result-panel { background: linear-gradient(180deg,#ffffff,#f8fafc); border-radius:12px }
